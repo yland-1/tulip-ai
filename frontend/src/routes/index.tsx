@@ -15,7 +15,20 @@ import { Shimmer } from "@/components/ai-elements/shimmer";
 import { Button } from "@/components/ui/button";
 import { VercelV0Chat } from "@/components/ui/v0-ai-chat";
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, CircleCheck, Flower2, Plus, ShieldCheck, X } from "lucide-react";
+import { 
+  Check, 
+  CircleCheck, 
+  Flower2, 
+  Plus, 
+  ShieldCheck, 
+  X,
+  Copy,
+  RefreshCcw,
+  Share,
+  ThumbsDown,
+  ThumbsUp
+} from "lucide-react";
+import { Action, Actions } from "../components/ui/actions";
 import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -361,6 +374,25 @@ function TulipAI() {
                     )}
                     {message.approval && (
                       <HitlApprovalCard status={approval} onDecision={setApproval} />
+                    )}
+                    {message.role === "assistant" && !message.clarification && (
+                      <Actions className="mt-4 pt-4 border-t border-border/50">
+                        <Action label="Retry">
+                          <RefreshCcw className="size-4" />
+                        </Action>
+                        <Action label="Like">
+                          <ThumbsUp className="size-4" />
+                        </Action>
+                        <Action label="Dislike">
+                          <ThumbsDown className="size-4" />
+                        </Action>
+                        <Action label="Copy">
+                          <Copy className="size-4" />
+                        </Action>
+                        <Action label="Share">
+                          <Share className="size-4" />
+                        </Action>
+                      </Actions>
                     )}
                   </MessageContent>
                 </Message>
