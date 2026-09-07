@@ -323,8 +323,8 @@ function TulipAI() {
               <Plus aria-hidden="true" /> <span className="hidden sm:inline">New Chat</span>
             </Button>
           </header>
-          <Conversation className="mt-16 mb-32">
-            <ConversationContent className="mx-auto w-full max-w-3xl gap-6 px-4 py-8 sm:px-6">
+          <Conversation className="mt-16 mb-32 px-4 sm:px-6">
+            <ConversationContent className="mx-auto w-full max-w-3xl gap-6 py-8">
               {messages.map((message) => (
                 <Message
                   key={message.id}
