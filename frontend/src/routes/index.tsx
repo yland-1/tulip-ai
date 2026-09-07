@@ -103,10 +103,21 @@ function Brand({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function VideoBackdrop() {
+function VideoBackdrop({ active }: { active?: boolean }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (active) {
+      videoRef.current?.pause();
+    } else {
+      videoRef.current?.play().catch(() => {});
+    }
+  }, [active]);
+
   return (
     <>
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
@@ -202,6 +213,8 @@ function HitlApprovalCard({
   );
 }
 
+import { AnimatedSilkGradient } from "../components/AnimatedSilkGradient";
+
 function TulipAI() {
   const [active, setActive] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -280,7 +293,8 @@ function TulipAI() {
 
   return (
     <main className="relative isolate h-svh overflow-hidden text-foreground">
-      <VideoBackdrop />
+      <VideoBackdrop active={active} />
+      <AnimatedSilkGradient active={active} />
       {!active ? (
         <section className="view-enter relative z-10 flex h-full items-center justify-center px-4 py-8">
           <div className="w-full max-w-3xl text-center">
@@ -318,10 +332,10 @@ function TulipAI() {
                     className={
                       message.role === "user"
                         ? "rounded-lg bg-primary px-4 py-3 text-primary-foreground shadow-lg"
-                        : "w-full rounded-lg border border-border bg-glass-strong px-4 py-4 text-foreground shadow-xl backdrop-blur-xl sm:px-5"
+                        : "w-fit max-w-full overflow-x-auto rounded-lg border border-border bg-glass-strong px-4 py-4 text-foreground shadow-xl backdrop-blur-xl sm:px-5"
                     }
                   >
-                    <MessageResponse>{message.text}</MessageResponse>
+                    <MessageResponse className="overflow-x-auto break-words">{message.text}</MessageResponse>
                     {message.clarification && (
                       <div className="mt-4 flex flex-wrap gap-3">
                         <Button
