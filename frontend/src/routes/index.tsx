@@ -338,7 +338,7 @@ function TulipAI() {
         </section>
       ) : (
         <section className="view-enter relative z-10 flex h-full flex-col">
-          <header className="fixed inset-x-0 top-0 z-30 flex h-16 items-center justify-between border-b border-zinc-200 bg-white/80 px-4 backdrop-blur-md sm:px-6">
+          <header className="fixed inset-x-0 top-0 z-30 flex h-16 items-center justify-between border-b border-zinc-200 bg-white px-4 sm:px-6">
             <Brand compact />
             <Button
               variant="outline"
@@ -412,22 +412,23 @@ function TulipAI() {
               ))}
               {thinking && (
                 <Message from="assistant" className="view-enter">
-                  <MessageContent className="rounded-2xl border border-zinc-100 bg-[#F4F4F5] px-5 py-4">
-                    <Shimmer className="text-sm text-zinc-600">Analyzing live campaign signals…</Shimmer>
+                  <MessageContent className="rounded-2xl border border-zinc-100 bg-[#F4F4F5] px-5 py-4 flex items-center gap-3">
+                    <RefreshCcw className="size-4 text-zinc-400 animate-spin" />
+                    <Shimmer className="text-sm text-zinc-600 font-medium">Running TulipAI Ad Analysis tool...</Shimmer>
                   </MessageContent>
                 </Message>
               )}
             </ConversationContent>
             <ConversationScrollButton className="border-zinc-200 bg-white text-zinc-900 shadow-sm" />
           </Conversation>
-          <footer className="fixed inset-x-0 bottom-0 z-30 border-t border-zinc-200 bg-[#FAFAFA]/80 px-4 py-3 backdrop-blur-md sm:px-6">
+          <footer className="fixed inset-x-0 bottom-0 z-30 border-t border-zinc-200 bg-white px-4 py-3 sm:px-6">
             <PromptInput
               onSubmit={continueChat}
-              className="mx-auto max-w-3xl rounded-2xl bg-white border border-zinc-200 shadow-sm"
+              className="mx-auto max-w-3xl rounded-2xl bg-[#F4F4F5] border-transparent shadow-none"
             >
               <PromptInputTextarea
                 aria-label="Continue conversation"
-                className="max-h-28 min-h-12 px-4 text-sm text-zinc-900 placeholder:text-zinc-400"
+                className="max-h-28 min-h-12 px-4 text-sm text-zinc-900 placeholder:text-zinc-500"
                 placeholder="Message TulipAI…"
               />
               <PromptInputFooter className="justify-end px-2 pb-2">
