@@ -322,12 +322,13 @@ function TulipAI() {
   };
 
   return (
-    <main className="relative isolate h-svh overflow-hidden bg-[#FAFAFA] text-zinc-900">
+    <main className={`relative isolate h-svh overflow-hidden ${active ? "bg-[#FAFAFA] text-zinc-900" : "text-foreground"}`}>
+      <VideoBackdrop active={active} />
       {!active ? (
         <section className="view-enter relative z-10 flex h-full items-center justify-center px-4 py-8">
           <div className="w-full max-w-3xl text-center">
-            <h1 className="font-display text-6xl font-bold sm:text-7xl text-zinc-900 tracking-tight">TulipAI</h1>
-            <p className="mx-auto mt-4 max-w-xl text-base text-zinc-500 sm:text-lg">
+            <h1 className="brand-text font-display text-6xl font-bold sm:text-7xl">TulipAI</h1>
+            <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground sm:text-lg">
               Autonomous cross-platform ad operations.
             </p>
             <div className="mx-auto mt-10 max-w-3xl text-left">
