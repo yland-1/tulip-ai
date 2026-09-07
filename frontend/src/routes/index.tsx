@@ -213,7 +213,7 @@ function HitlApprovalCard({
   );
 }
 
-import { AnimatedSilkGradient } from "../components/AnimatedSilkGradient";
+import { SilkGradient } from "../components/SilkGradient";
 
 function TulipAI() {
   const [active, setActive] = useState(false);
@@ -294,7 +294,7 @@ function TulipAI() {
   return (
     <main className="relative isolate h-svh overflow-hidden text-foreground">
       <VideoBackdrop active={active} />
-      <AnimatedSilkGradient active={active} />
+      <SilkGradient active={active} />
       {!active ? (
         <section className="view-enter relative z-10 flex h-full items-center justify-center px-4 py-8">
           <div className="w-full max-w-3xl text-center">
