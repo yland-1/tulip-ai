@@ -364,7 +364,7 @@ function TulipAI() {
                         : "w-full max-w-full overflow-x-auto rounded-2xl border border-zinc-100 bg-[#F4F4F5] px-5 py-4 text-zinc-900 shadow-sm sm:px-6"
                     }
                   >
-                    <MessageResponse className="overflow-x-auto break-words text-zinc-900 prose-p:text-zinc-900 prose-headings:text-zinc-900 prose-strong:text-zinc-900 prose-a:text-zinc-900 prose-code:text-zinc-900 prose-li:text-zinc-900">{message.text}</MessageResponse>
+                    <MessageResponse className="overflow-x-auto break-words text-zinc-900 prose-p:text-zinc-900 prose-headings:text-zinc-900 prose-strong:text-zinc-900 prose-a:text-zinc-900 prose-li:text-zinc-900 prose-pre:text-zinc-100 prose-pre:bg-zinc-900 dark:prose-pre:bg-zinc-900 [&_pre_code]:text-zinc-100 [&_:not(pre)>code]:text-zinc-900">{message.text}</MessageResponse>
                     {message.clarification && (
                       <div className="mt-4 flex flex-wrap gap-3">
                         <Button
