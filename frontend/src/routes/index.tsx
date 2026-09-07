@@ -129,7 +129,10 @@ function VideoBackdrop({ active }: { active?: boolean }) {
           type="video/mp4"
         />
       </video>
-      <div className="fixed inset-0 z-0 bg-app-overlay" aria-hidden="true" />
+      <div 
+        className={`fixed inset-0 z-0 bg-app-overlay transition-opacity duration-1000 ${active ? 'opacity-0' : 'opacity-100'}`} 
+        aria-hidden="true" 
+      />
     </>
   );
 }
@@ -321,18 +324,18 @@ function TulipAI() {
             </Button>
           </header>
           <Conversation className="mt-16 mb-32">
-            <ConversationContent className="mx-auto w-full max-w-4xl gap-6 px-4 py-8 sm:px-6">
+            <ConversationContent className="mx-auto w-full max-w-3xl gap-6 px-4 py-8 sm:px-6">
               {messages.map((message) => (
                 <Message
                   key={message.id}
                   from={message.role}
-                  className="view-enter max-w-[92%] sm:max-w-[82%]"
+                  className="view-enter w-full"
                 >
                   <MessageContent
                     className={
                       message.role === "user"
-                        ? "rounded-lg bg-primary px-4 py-3 text-primary-foreground shadow-lg"
-                        : "w-fit max-w-full overflow-x-auto rounded-lg border border-border bg-glass-strong px-4 py-4 text-foreground shadow-xl backdrop-blur-xl sm:px-5"
+                        ? "rounded-lg bg-primary px-4 py-3 text-primary-foreground shadow-lg w-full"
+                        : "w-full max-w-full overflow-x-auto rounded-lg border border-border bg-glass-strong px-4 py-4 text-foreground shadow-xl backdrop-blur-xl sm:px-5"
                     }
                   >
                     <MessageResponse className="overflow-x-auto break-words">{message.text}</MessageResponse>
